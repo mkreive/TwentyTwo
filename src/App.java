@@ -7,7 +7,7 @@ public class App {
     public static void main(String[] args) {
 
         // 1
-        List<String> cities = new ArrayList<>(List.of("Vilnius", "Kaunas", "Klaipeda", "Alytus", "Siauliai", "Jurbarkas", "Marijampole"));
+        List<String> cities = new ArrayList<>(List.of("Vilnius", "Kaunas", "Marijampole", "Vilnius", "Klaipeda", "Alytus", "Alytus", "Siauliai", "Jurbarkas", "Marijampole"));
         cities.stream()
                 .forEach(s -> System.out.print(s.length() + ", "));
         System.out.println();
@@ -74,6 +74,66 @@ public class App {
         System.out.println(citiesUpperCased);
 
         // 11
+        boolean allStartsWithA = citiesUpperCased.stream()
+                .allMatch(s -> s.startsWith("A"));
+        System.out.println("All cities starts with letter A: " + allStartsWithA);
+
+        // 12
+        Integer sumOfAllPositiveNums = numbers.stream()
+                .filter(num -> num > 0)
+                .reduce(0, (a, b) -> a + b);
+        System.out.println("Sum of all positive numbers = " + sumOfAllPositiveNums);
+
+        // 13
+        Integer biggestNum = numbers.stream()
+                .max(Comparator.comparing(Integer::valueOf))
+                .get();
+        System.out.println("Biggest number = " + biggestNum);
+
+        // 14
+        List<Integer> dividedByTwo = numbers.stream()
+                .map(num -> num * 2)
+                .toList();
+        System.out.println("Divided by 2: " + dividedByTwo);
+
+        // 15
+        List<Integer> allEqualNums = numbers.stream()
+                .filter(num -> num % 2 == 0)
+                .toList();
+        System.out.println("Numbers that are equal: " + allEqualNums);
+
+        // 16
+        List<String> uniqueCities = cities.stream()
+                .distinct()
+                .toList();
+        System.out.println("All cities: " + cities);
+        System.out.println("Unique cities: " + uniqueCities);
+
+        // 17
+        boolean isDivisibleByThree = numbers.stream()
+                .anyMatch(num -> num % 3 == 0);
+        System.out.println("There is at least one number divisible by 3: " + isDivisibleByThree);
+
+        // 18
+        Integer wordsLengthSum = cities.stream()
+                .reduce("", (a, b) -> a + b)
+                .length();
+        System.out.println("All words length sum: " + wordsLengthSum + " letters");
+
+        // 19
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
