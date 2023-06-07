@@ -7,7 +7,7 @@ public class App {
     public static void main(String[] args) {
 
         // 1
-        List<String> cities = new ArrayList<>(List.of("Vilnius", "Kaunas", "Marijampole", "Vilnius", "Klaipeda", "Alytus", "Alytus", "Siauliai", "Jurbarkas", "Marijampole"));
+        List<String> cities = new ArrayList<>(List.of("Vilnius", "Kaunas", "Marijampole", "Vilnius", "Klaipeda", "Alytus", "Seda", "Siauliai", "Jurbarkas", "Marijampole"));
         cities.stream()
                 .forEach(s -> System.out.print(s.length() + ", "));
         System.out.println();
@@ -121,6 +121,37 @@ public class App {
         System.out.println("All words length sum: " + wordsLengthSum + " letters");
 
         // 19
+        List<String> firstThreeUniqueCities = cities.stream()
+                .distinct()
+                .limit(3)
+                .sorted()
+                .toList();
+        System.out.println(firstThreeUniqueCities);
+
+        // 20
+        List<Integer> sortedListFromSmallest = numbers.stream()
+                .sorted(Comparator.reverseOrder())
+                .toList();
+        System.out.println(sortedListFromSmallest);
+
+        // 21
+        boolean areAllNumsPositive = numbers.stream()
+                .allMatch(num -> num > 0);
+        System.out.println("All numbers are positive: " + areAllNumsPositive);
+
+        // 22
+        List<String> citeisLessThan5Letters = cities.stream()
+                .filter(city -> city.length() <= 5)
+                .toList();
+        System.out.println("Cities that are 5 letters or less: " + citeisLessThan5Letters);
+
+        // 23
+        Integer numsSumSquared = numbers.stream()
+                .map(num -> num * num)
+                .reduce(0, (num1, num2) -> num1 + num2);
+        System.out.println("Sum of all numbers squared = " + numsSumSquared);
+
+
 
 
 
